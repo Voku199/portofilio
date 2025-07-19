@@ -8,15 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
 :root {
-  --primary-color: #6366f1;
-  --secondary-color: #10b981;
-  --accent-color: #f59e42;
-  --dark-bg: #18181b;
-  --card-bg: #232336;
-  --text-light: #f4f4f9;
-  --text-muted: #b3b3c6;
+  --light-beige: #f8f4e9;
+  --beige: #e6d3c4;
+  --white: #ffffff;
+  --gray: #d9d9d9;
+  --dark-gray: #777;
+  --primary-color: #8c7b6b;
+  --secondary-color: #a58f7a;
+  --accent-color: #c5b5a6;
+  --card-bg: #ffffff;
+  --text: #333;
+  --text-muted: #777;
   --border-radius: 18px;
-  --shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
+  --shadow: 0 4px 24px 0 rgba(0,0,0,0.05);
 }
 
 * {
@@ -27,8 +31,8 @@
 
 body {
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  background: linear-gradient(120deg, #232336 0%, #18181b 100%);
-  color: var(--text-light);
+  background: linear-gradient(135deg, var(--light-beige) 0%, var(--white) 100%);
+  color: var(--text);
   min-height: 100vh;
   line-height: 1.7;
   letter-spacing: 0.01em;
@@ -41,7 +45,7 @@ header {
   gap: 2.5rem;
   padding: 4rem 2rem 3rem 2rem;
   max-width: 1100px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -52,6 +56,11 @@ header {
   width: 140px;
   min-width: 100px;
   max-width: 160px;
+  transition: transform 0.3s ease;
+}
+
+.header-side:hover {
+  transform: translateY(-5px);
 }
 
 .header-side img {
@@ -59,11 +68,10 @@ header {
   height: 130px;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid var(--primary-color);
-  box-shadow: 0 2px 16px 0 rgba(99,102,241,0.18);
+  border: 3px solid var(--beige);
+  box-shadow: 0 2px 16px 0 rgba(140,123,107,0.15);
   margin-bottom: 0.7rem;
-  background: #222;
-  transition: width 0.2s, height 0.2s;
+  background: #fafafa;
 }
 
 .header-side .caption {
@@ -80,28 +88,88 @@ header {
   min-width: 0;
 }
 
-header h1 {
-  font-size: 3.2rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+.name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.7rem;
 }
 
-header h2 {
-  font-size: 1.5rem;
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.name-part {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   color: var(--primary-color);
-  margin-bottom: 0.7rem;
+}
+
+.nickname {
+  font-size: 1.8rem;
+  color: var(--primary-color);
   font-weight: 500;
   letter-spacing: 0.01em;
+  background: linear-gradient(90deg, var(--beige), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 0.5rem;
+  position: relative;
+}
+
+.nickname::before, .nickname::after {
+  content: '"';
+  position: absolute;
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.nickname::before {
+  left: -0.5rem;
+  top: -0.3rem;
+}
+
+.nickname::after {
+  right: -0.5rem;
+  bottom: -0.3rem;
 }
 
 header p {
   font-size: 1.3rem;
   color: var(--text-muted);
   margin-bottom: 0.5rem;
+}
+
+.hobby-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.hobby-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+.hobby-icon:hover {
+  transform: scale(1.2);
+}
+
+.hobby-icon span {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: var(--text-muted);
 }
 
 main {
@@ -116,19 +184,37 @@ section {
   box-shadow: var(--shadow);
   margin-bottom: 2.5rem;
   padding: 2.5rem 2rem;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.3s ease;
+  position: relative;
 }
 
 section:hover {
-  box-shadow: 0 8px 32px 0 rgba(99,102,241,0.18);
+  box-shadow: 0 8px 32px 0 rgba(140,123,107,0.1);
+  transform: translateY(-5px);
 }
 
 h2 {
   font-size: 2.1rem;
   margin-bottom: 1.7rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-weight: 600;
   letter-spacing: 0.01em;
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.whoami {
+  font-size: 1.18rem;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.whoami strong {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 .project-list {
@@ -138,55 +224,79 @@ h2 {
 }
 
 .project-item {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.8);
   border-radius: var(--border-radius);
   padding: 1.7rem 1.3rem;
-  box-shadow: 0 2px 12px 0 rgba(99,102,241,0.07);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px 0 rgba(140,123,107,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1.5px solid transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-item:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 6px 24px 0 rgba(99,102,241,0.16);
-  border-color: var(--primary-color);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(140,123,107,0.15);
+  border-color: var(--beige);
 }
 
 .project-item h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
   color: var(--primary-color);
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 
 .project-item p {
   color: var(--text-muted);
   font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
 }
 
 .project-item a {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.1rem;
-  color: var(--secondary-color);
-  background: rgba(16,185,129,0.08);
-  padding: 0.45rem 1.1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 8px;
   font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
-  transition: background 0.18s, color 0.18s;
-  box-shadow: 0 1px 4px 0 rgba(16,185,129,0.07);
+  transition: all 0.3s ease;
+}
+
+.project-item a.github {
+  background: rgba(140,123,107,0.08);
+  color: var(--primary-color);
+}
+
+.project-item a.website {
+  background: var(--primary-color);
+  color: var(--white);
 }
 
 .project-item a:hover {
-  background: var(--secondary-color);
-  color: #fff;
-  text-decoration: none;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(140,123,107,0.15);
 }
 
-/* --- Tech card hover effect to match project-item --- */
+.project-item a:hover i {
+  transform: translateX(5px);
+}
+
+.project-item a i {
+  transition: transform 0.3s ease;
+}
+
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -195,94 +305,115 @@ h2 {
 }
 
 .tech-card {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.8);
   border-radius: var(--border-radius);
-  padding: 1.3rem 1rem;
-  border-left: 4px solid var(--primary-color);
-  box-shadow: 0 1px 8px 0 rgba(99,102,241,0.07);
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  border: 1.5px solid transparent;
+  padding: 1.8rem 1.5rem;
+  border-left: 4px solid var(--beige);
+  box-shadow: 0 1px 8px 0 rgba(140,123,107,0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .tech-card:hover {
-  border-left: 4px solid var(--secondary-color);
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 6px 24px 0 rgba(99,102,241,0.16);
-  border-color: var(--primary-color);
+  border-left: 4px solid var(--primary-color);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(140,123,107,0.15);
 }
 
 .tech-card h3 {
   color: var(--primary-color);
-  font-size: 1.1rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 
 .tech-card p {
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.interests {
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  font-size: 1.15rem;
-  color: var(--text-light);
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0.5rem 0;
+  min-width: 60px;
 }
 
-/* --- New section: Who am I --- */
-.whoami {
-  text-align: center;
-  font-size: 1.18rem;
-  color: var(--text-light);
-  max-width: 700px;
-  margin: 0 auto 1.5rem auto;
-  padding: 0.5rem 0;
-}
-
-.whoami strong {
+.tech-icon i {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
   color: var(--primary-color);
+}
+
+.tech-icon span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
-  font-size: 1.13rem;
+  gap: 1.3rem;
+  font-size: 1.15rem;
   margin-top: 0.5rem;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
 .contact-info a {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.18s;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .contact-info a:hover {
-  color: var(--secondary-color);
+  color: var(--text);
   text-decoration: underline;
+}
+
+.contact-info a:hover i {
+  transform: translateX(5px);
+}
+
+.contact-info a i {
+  transition: transform 0.3s ease;
 }
 
 footer {
   text-align: center;
-  padding: 2.5rem 2rem 1.5rem 2rem;
+  padding: 3rem 2rem;
   margin-top: 3rem;
   color: var(--text-muted);
   font-size: 1.05rem;
-  border-top: 1.5px solid rgba(255,255,255,0.08);
-  background: rgba(24,24,27,0.92);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  box-shadow: 0 -2px 12px 0 rgba(99,102,241,0.07);
+  border-top: 1.5px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 -2px 12px 0 rgba(0,0,0,0.03);
 }
 
 footer p:first-child {
   font-style: italic;
   margin-bottom: 0.7rem;
-  color: var(--accent-color);
-  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 
 @media (max-width: 900px) {
@@ -297,6 +428,7 @@ footer p:first-child {
     width: 100%;
     max-width: 100%;
     margin-bottom: 0.5rem;
+    justify-content: center;
   }
   .header-side img {
     width: 90px;
@@ -304,29 +436,114 @@ footer p:first-child {
   }
 }
 
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 2.1rem;
-  }
-  header h2 {
-    font-size: 1.1rem;
-  }
-  h2 {
-    font-size: 1.3rem;
-  }
-  section {
-    padding: 1.2rem 0.5rem;
-  }
-  .project-list, .tech-grid {
+@media (max-width: 768px) {
+  .project-list,
+  .tech-grid {
     grid-template-columns: 1fr;
   }
+
+  .name-row {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .name-part {
+    font-size: 2.5rem;
+  }
+
+  .nickname {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .name-part {
+    font-size: 2.1rem;
+  }
+
+  .nickname {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  section {
+    padding: 2rem 1.5rem;
+  }
+
   .header-side {
     width: 100px;
   }
+
   .header-side img {
     width: 65px;
     height: 65px;
   }
+
+  .hobby-icons {
+    gap: 1rem;
+  }
+
+  .hobby-icon {
+    font-size: 1.5rem;
+  }
+
+  .hobby-icon span {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-side {
+    flex-direction: column;
+    width: auto;
+  }
+
+  .hobby-icons {
+    flex-wrap: wrap;
+  }
+
+  .hobby-icon {
+    width: 70px;
+  }
+
+  .name-part {
+    font-size: 1.8rem;
+  }
+
+  .nickname {
+    font-size: 1.2rem;
+  }
+}
+
+/* Animace pro plynulé zobrazení */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
 }
     </style>
 </head>
@@ -334,13 +551,43 @@ footer p:first-child {
     <header>
         <div class="header-side">
             <img src="ja_seriozne.png" alt="Profilová fotka">
-            <div class="caption">Normalní fotka</div>
+            <div class="caption">Normální fotka</div>
         </div>
+
         <div class="header-center">
-            <h1>Vojtěch Kurinec</h1>
-            <h2>"Voku"</h2>
+            <div class="name-container">
+                <div class="name-row">
+                    <div class="name-part animate">Vojtěch</div>
+                    <div class="nickname animate delay-1">Voku</div>
+                    <div class="name-part animate delay-2">Kurinec</div>
+                </div>
+            </div>
             <p>Mladý vývojář & IT nadšenec</p>
+
+            <div class="hobby-icons">
+                <div class="hobby-icon">
+                    <i class="fas fa-robot"></i>
+                    <span>AI</span>
+                </div>
+                <div class="hobby-icon">
+                    <i class="fas fa-print"></i>
+                    <span>3D tisk</span>
+                </div>
+                <div class="hobby-icon">
+                    <i class="fas fa-microchip"></i>
+                    <span>Raspberry Pi</span>
+                </div>
+                <div class="hobby-icon">
+                    <i class="fas fa-code"></i>
+                    <span>Programování</span>
+                </div>
+                <div class="hobby-icon">
+                    <i class="fas fa-brain"></i>
+                    <span>Technologie</span>
+                </div>
+            </div>
         </div>
+
         <div class="header-side">
             <img src="ja_uwu.png" alt="Lego profil">
             <div class="caption">Trošku vtipnej.</div>
@@ -348,78 +595,142 @@ footer p:first-child {
     </header>
 
     <main>
-        <!-- New section: Who am I -->
-<section>
-    <h2>👤 Kdo jsem?</h2>
-    <div class="whoami">
-        <p>
-            Jmenuji se <strong>Vojtěch Kurinec</strong>, ale většina mě zná jako <strong>Voku</strong>. Jsem nadšenec do IT – věnuju se programování, AI, 3D tisku a Raspberry Pi. Pracuji na projektech jako <strong>Knowix</strong>, <strong>Školní chat</strong> nebo <strong>Easy Keylogger</strong>.
-            Ve škole jsem aktivní, sportuju a dokážu být vážný, když je potřeba. Dělám věci hlavně proto, abych se posouval dál a pomáhal ostatním – ne pro slávu nebo peníze.
-        </p>
-    </div>
-</section>
-
-
+        <!-- Kdo jsem -->
         <section>
-            <h2>💡 Projekty</h2>
+            <h2><i class="fas fa-user"></i> Kdo jsem?</h2>
+            <div class="whoami">
+                <p>
+                    Jmenuji se <strong>Vojtěch Kurinec</strong>, ale většina mě zná jako <strong>Voku</strong>. Jsem nadšenec do IT – věnuju se programování, AI, 3D tisku a Raspberry Pi. Pracuji na projektech jako <strong>Knowix</strong>, <strong>Školní chat</strong> nebo <strong>Easy Keylogger</strong>.
+                    Ve škole jsem aktivní, sportuju a dokážu být vážný, když je potřeba. Dělám věci hlavně proto, abych se posouval dál a pomáhal ostatním – ne pro slávu nebo peníze.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projekty -->
+        <section>
+            <h2><i class="fas fa-lightbulb"></i> Projekty</h2>
             <div class="project-list">
                 <div class="project-item">
-                    <h3>Knowix</h3>
+                    <h3><i class="fas fa-graduation-cap"></i> Knowix</h3>
                     <p>Vzdělávací web (Něco jako Umimeto.org)</p>
-                    <a href="https://github.com/Voku199/Knowix" target="_blank">
-                        <i class="fab fa-github"></i> Zobrazit na GitHubu
-                    </a>
+                    <div class="project-links">
+                        <a href="https://knowix.cz" target="_blank" class="website">
+                            <i class="fas fa-globe"></i> Navštívit web
+                        </a>
+                        <a href="https://github.com/Voku199/Knowix" target="_blank" class="github">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
                 </div>
 
                 <div class="project-item">
-                    <h3>Školní chat</h3>
+                    <h3><i class="fas fa-comments"></i> Školní chat</h3>
                     <p>Chatovací platforma (Flet, zároveň první projekt)</p>
-                    <a href="https://github.com/Voku199/skolni-chat-flet" target="_blank">
+                    <a href="https://github.com/Voku199/skolni-chat-flet" target="_blank" class="github">
                         <i class="fab fa-github"></i> Zobrazit na GitHubu
                     </a>
                 </div>
 
                 <div class="project-item">
-                    <h3>Easy Keylogger</h3>
+                    <h3><i class="fas fa-keyboard"></i> Easy Keylogger</h3>
                     <p>Vzdělávací pokus (neškodný)</p>
-                    <a href="https://github.com/Voku199/Easy-keylogger" target="_blank">
+                    <a href="https://github.com/Voku199/Easy-keylogger" target="_blank" class="github">
                         <i class="fab fa-github"></i> Zobrazit na GitHubu
                     </a>
                 </div>
             </div>
         </section>
 
+        <!-- Technologie -->
         <section>
-            <h2>🛠️ Technologie</h2>
+            <h2><i class="fas fa-tools"></i> Technologie</h2>
             <div class="tech-grid">
                 <div class="tech-card">
-                    <h3>Jazyky</h3>
-                    <p>Python, HTML, CSS, trochu JavaScript</p>
+                    <h3><i class="fas fa-code"></i> Jazyky</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="tech-card">
-                    <h3>Frameworky</h3>
-                    <p>Flask, Flet, Discord, Odoo</p>
+                    <h3><i class="fas fa-layer-group"></i> Frameworky</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon">
+                            <i class="fas fa-server"></i>
+                            <span>Flask</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Flet</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>Discord</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Odoo</span>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="tech-card">
-                    <h3>Ostatní</h3>
-                    <p>Raspberry Pi, 3D tisk, střih videí, Technologie, AI</p>
+                    <h3><i class="fas fa-cogs"></i> Ostatní</h3>
+                    <div class="tech-icons">
+                        <div class="tech-icon">
+                            <i class="fas fa-microchip"></i>
+                            <span>Raspberry Pi</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-print"></i>
+                            <span>3D tisk</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-video"></i>
+                            <span>Střih videí</span>
+                        </div>
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                            <span>AI</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-<!--        <section>-->
-<!--            <h2>🎯 Zájmy</h2>-->
-<!--            <div class="interests">-->
-<!--                <p>IT všeho druhu – hardware, software, AI. Baví mě běhat, tvořit a učit se novým věcem. Nejvíc miluju programování a rád pomáhám ostatním.</p>-->
-<!--            </div>-->
-<!--        </section>-->
-
+        <!-- Kontakt -->
         <section>
-            <h2>📫 Kontakt</h2>
+            <h2><i class="fas fa-envelope"></i> Kontakt</h2>
             <div class="contact-info">
-                <p><strong>Email:</strong><a href="mailto:vojta.kurinec@gmail.com.com?subject=Dotaz&body=Ahoj, hele chci se zeptat na"> vojta.kurinec@gmail.com</a></p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/Voku199" target="_blank">@Voku199</a></p>
-                <p><strong>Kraj</strong> Jihočeský, Česká republika</p>
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <strong>Email:</strong>
+                    <a href="mailto:vojta.kurinec@gmail.com?subject=Dotaz&body=Ahoj, hele chci se zeptat na">vojta.kurinec@gmail.com</a>
+                </p>
+                <p>
+                    <i class="fab fa-github"></i>
+                    <strong>GitHub:</strong>
+                    <a href="https://github.com/Voku199" target="_blank">@Voku199</a>
+                </p>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <strong>Kraj:</strong> Jihočeský, Česká republika
+                </p>
             </div>
         </section>
     </main>
@@ -431,8 +742,27 @@ footer p:first-child {
     <script>
       // Dynamicky aktualizovaný datum ve footeru
       const date = new Date();
-      const formatted = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formatted = date.toLocaleDateString('cs-CZ', options);
       document.getElementById('footer-date').textContent = `© Vojtěch Kurinec, ${formatted}`;
+
+      // Jednoduchá animace při scrollování
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.project-item, .tech-card');
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+
+          if (elementPosition < screenPosition) {
+            element.style.opacity = 1;
+            element.style.transform = 'translateY(0)';
+          }
+        });
+      };
+
+      // Spustit při načtení a při scrollování
+      window.addEventListener('load', animateOnScroll);
+      window.addEventListener('scroll', animateOnScroll);
     </script>
 </body>
 </html>
