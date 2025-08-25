@@ -416,6 +416,31 @@ footer p:first-child {
   font-weight: 500;
 }
 
+.lang-switch {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.4rem;
+  z-index: 1000;
+}
+.lang-switch button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--beige);
+  background: var(--card-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  transition: all 0.25s ease;
+}
+.lang-switch button.active, .lang-switch button:hover {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(140,123,107,0.25);
+}
+
 @media (max-width: 900px) {
   header {
     flex-direction: column;
@@ -548,10 +573,14 @@ footer p:first-child {
     </style>
 </head>
 <body>
+    <div class="lang-switch" aria-label="Language switch">
+        <button type="button" data-lang="cs" class="active">Česky</button>
+        <button type="button" data-lang="en">English</button>
+    </div>
     <header>
         <div class="header-side">
-            <img src="ja_seriozne.png" alt="Profilová fotka">
-            <div class="caption">Normální fotka</div>
+            <img src="ja_seriozne.png" alt="Profilová fotka" data-i18n-attr="alt:captionNormal">
+            <div class="caption" data-i18n="captionNormal">Normální fotka</div>
         </div>
 
         <div class="header-center">
@@ -562,60 +591,57 @@ footer p:first-child {
                     <div class="name-part animate delay-2">Kurinec</div>
                 </div>
             </div>
-            <p>Mladý vývojář & IT nadšenec</p>
+            <p data-i18n="tagline">Mladý vývojář & IT nadšenec</p>
 
             <div class="hobby-icons">
                 <div class="hobby-icon">
                     <i class="fas fa-robot"></i>
-                    <span>AI</span>
+                    <span data-i18n="hobbyAI">AI</span>
                 </div>
                 <div class="hobby-icon">
                     <i class="fas fa-print"></i>
-                    <span>3D tisk</span>
+                    <span data-i18n="hobby3d">3D tisk</span>
                 </div>
                 <div class="hobby-icon">
                     <i class="fas fa-microchip"></i>
-                    <span>Raspberry Pi</span>
+                    <span data-i18n="hobbyRpi">Raspberry Pi</span>
                 </div>
                 <div class="hobby-icon">
                     <i class="fas fa-code"></i>
-                    <span>Programování</span>
+                    <span data-i18n="hobbyCode">Programování</span>
                 </div>
                 <div class="hobby-icon">
                     <i class="fas fa-brain"></i>
-                    <span>Technologie</span>
+                    <span data-i18n="hobbyTech">Technologie</span>
                 </div>
             </div>
         </div>
 
         <div class="header-side">
-            <img src="ja_uwu.png" alt="Lego profil">
-            <div class="caption">Trošku vtipnej.</div>
+            <img src="ja_uwu.png" alt="Lego profil" data-i18n-attr="alt:captionFunny">
+            <div class="caption" data-i18n="captionFunny">Trošku vtipnej.</div>
         </div>
     </header>
 
     <main>
         <!-- Kdo jsem -->
         <section>
-            <h2><i class="fas fa-user"></i> Kdo jsem?</h2>
+            <h2><i class="fas fa-user"></i> <span data-i18n="whoHeading">Kdo jsem?</span></h2>
             <div class="whoami">
-                <p>
-                    Jmenuji se <strong>Vojtěch Kurinec</strong>, ale většina mě zná jako <strong>Voku</strong>. Jsem nadšenec do IT – věnuju se programování, AI, 3D tisku a Raspberry Pi. Pracuji na projektech jako <strong>Knowix</strong>, <strong>Školní chat</strong> nebo <strong>Easy Keylogger</strong>.
-                    Ve škole jsem aktivní, sportuju a dokážu být vážný, když je potřeba. Dělám věci hlavně proto, abych se posouval dál a pomáhal ostatním – ne pro slávu nebo peníze.
-                </p>
+                <p data-i18n="whoText">Jmenuji se <strong>Vojtěch Kurinec</strong>, ale většina mě zná jako <strong>Voku</strong>. Je mi <strong>14 let</strong> a jsem nadšenec do IT, věnuju se programování, AI, 3D tisku a Raspberry Pi. Pracuju na projektu jako <strong>Knowix</strong>. A pracoval jsem nad <strong>Školní chat</strong>, <strong>Easy Keylogger</strong> <strong>rádoby mini OS</strong> Ve škole jsem aktivní, sportuju a dokážu být vážný, když je potřeba. Dělám věci hlavně proto, abych se posouval dál a pomáhal ostatním – ne pro slávu nebo peníze.</p>
             </div>
         </section>
 
         <!-- Projekty -->
         <section>
-            <h2><i class="fas fa-lightbulb"></i> Projekty</h2>
+            <h2><i class="fas fa-lightbulb"></i> <span data-i18n="projectsHeading">Projekty</span></h2>
             <div class="project-list">
                 <div class="project-item">
-                    <h3><i class="fas fa-graduation-cap"></i> Knowix</h3>
-                    <p>Vzdělávací web (Něco jako Umimeto.org)</p>
+                    <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="knowixTitle">Knowix</span></h3>
+                    <p data-i18n="knowixDesc">Vzdělávací web (Něco jako Umimeto.org)</p>
                     <div class="project-links">
                         <a href="https://knowix.cz" target="_blank" class="website">
-                            <i class="fas fa-globe"></i> Navštívit web
+                            <i class="fas fa-globe"></i> <span data-i18n="visitSite">Navštívit web</span>
                         </a>
                         <a href="https://github.com/Voku199/Knowix" target="_blank" class="github">
                             <i class="fab fa-github"></i> GitHub
@@ -624,18 +650,18 @@ footer p:first-child {
                 </div>
 
                 <div class="project-item">
-                    <h3><i class="fas fa-comments"></i> Školní chat</h3>
-                    <p>Chatovací platforma (Flet, zároveň první projekt)</p>
+                    <h3><i class="fas fa-comments"></i> <span data-i18n="schoolChatTitle">Školní chat</span></h3>
+                    <p data-i18n="schoolChatDesc">Chatovací platforma (Flet, zároveň první projekt)</p>
                     <a href="https://github.com/Voku199/skolni-chat-flet" target="_blank" class="github">
-                        <i class="fab fa-github"></i> Zobrazit na GitHubu
+                        <i class="fab fa-github"></i> <span data-i18n="viewOnGitHub">Zobrazit na GitHubu</span>
                     </a>
                 </div>
 
                 <div class="project-item">
-                    <h3><i class="fas fa-keyboard"></i> Easy Keylogger</h3>
-                    <p>Vzdělávací pokus (neškodný)</p>
+                    <h3><i class="fas fa-keyboard"></i> <span data-i18n="easyKeyloggerTitle">Easy Keylogger</span></h3>
+                    <p data-i18n="easyKeyloggerDesc">Vzdělávací pokus (neškodný)</p>
                     <a href="https://github.com/Voku199/Easy-keylogger" target="_blank" class="github">
-                        <i class="fab fa-github"></i> Zobrazit na GitHubu
+                        <i class="fab fa-github"></i> <span data-i18n="viewOnGitHub">Zobrazit na GitHubu</span>
                     </a>
                 </div>
             </div>
@@ -643,10 +669,10 @@ footer p:first-child {
 
         <!-- Technologie -->
         <section>
-            <h2><i class="fas fa-tools"></i> Technologie</h2>
+            <h2><i class="fas fa-tools"></i> <span data-i18n="technologiesHeading">Technologie</span></h2>
             <div class="tech-grid">
                 <div class="tech-card">
-                    <h3><i class="fas fa-code"></i> Jazyky</h3>
+                    <h3><i class="fas fa-code"></i> <span data-i18n="languagesHeading">Jazyky</span></h3>
                     <div class="tech-icons">
                         <div class="tech-icon">
                             <i class="fab fa-python"></i>
@@ -668,7 +694,7 @@ footer p:first-child {
                 </div>
 
                 <div class="tech-card">
-                    <h3><i class="fas fa-layer-group"></i> Frameworky</h3>
+                    <h3><i class="fas fa-layer-group"></i> <span data-i18n="frameworksHeading">Frameworky</span></h3>
                     <div class="tech-icons">
                         <div class="tech-icon">
                             <i class="fas fa-server"></i>
@@ -690,7 +716,7 @@ footer p:first-child {
                 </div>
 
                 <div class="tech-card">
-                    <h3><i class="fas fa-cogs"></i> Ostatní</h3>
+                    <h3><i class="fas fa-cogs"></i> <span data-i18n="otherHeading">Ostatní</span></h3>
                     <div class="tech-icons">
                         <div class="tech-icon">
                             <i class="fas fa-microchip"></i>
@@ -715,36 +741,141 @@ footer p:first-child {
 
         <!-- Kontakt -->
         <section>
-            <h2><i class="fas fa-envelope"></i> Kontakt</h2>
+            <h2><i class="fas fa-envelope"></i> <span data-i18n="contactHeading">Kontakt</span></h2>
             <div class="contact-info">
                 <p>
                     <i class="fas fa-envelope"></i>
-                    <strong>Email:</strong>
+                    <strong data-i18n="emailLabel">Email:</strong>
                     <a href="mailto:vojta.kurinec@gmail.com?subject=Dotaz&body=Ahoj, hele chci se zeptat na">vojta.kurinec@gmail.com</a>
                 </p>
                 <p>
                     <i class="fab fa-github"></i>
-                    <strong>GitHub:</strong>
+                    <strong data-i18n="githubLabel">GitHub:</strong>
                     <a href="https://github.com/Voku199" target="_blank">@Voku199</a>
                 </p>
                 <p>
                     <i class="fas fa-map-marker-alt"></i>
-                    <strong>Kraj:</strong> Jihočeský, Česká republika
+                    <strong data-i18n="regionLabel">Kraj:</strong> <span data-i18n="regionValue">Jihočeský, Česká republika</span>
                 </p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>"Sedmkrát padneš, osmkrát vstaneš."</p>
+        <p data-i18n="footerQuote">"Sedmkrát padneš, osmkrát vstaneš."</p>
         <p id="footer-date"></p>
     </footer>
     <script>
-      // Dynamicky aktualizovaný datum ve footeru
-      const date = new Date();
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      const formatted = date.toLocaleDateString('cs-CZ', options);
-      document.getElementById('footer-date').textContent = `© Vojtěch Kurinec, ${formatted}`;
+      const translations = {
+        cs: {
+          title: 'Vojtěch "Voku" Kurinec | Portfolio',
+          tagline: 'Mladý vývojář & IT nadšenec',
+          captionNormal: 'Normální fotka',
+            captionFunny: 'Trošku vtipnej.',
+          hobbyAI: 'AI',
+          hobby3d: '3D tisk',
+          hobbyRpi: 'Raspberry Pi',
+          hobbyCode: 'Programování',
+          hobbyTech: 'Technologie',
+          whoHeading: 'Kdo jsem?',
+          whoText: 'Jmenuji se <strong>Vojtěch Kurinec</strong>, ale většina mě zná jako <strong>Voku</strong>. Je mi <strong>14 let</strong> a jsem nadšenec do IT, věnuju se programování, AI, 3D tisku a Raspberry Pi. Pracuju na projektu jako <strong>Knowix</strong>. A pracoval jsem nad <strong>Školní chat</strong>, <strong>Easy Keylogger</strong> a <strong>rádoby mini OS</strong>. Ve škole jsem aktivní, sportuju a dokážu být vážný, když je potřeba. Dělám věci hlavně proto, abych se posouval dál a pomáhal ostatním – ne pro slávu nebo peníze.',
+          projectsHeading: 'Projekty',
+          knowixTitle: 'Knowix',
+          knowixDesc: 'Vzdělávací web (Něco jako Umimeto.org)',
+          visitSite: 'Navštívit web',
+          schoolChatTitle: 'Školní chat',
+          schoolChatDesc: 'Chatovací platforma (Flet, zároveň první projekt)',
+          viewOnGitHub: 'Zobrazit na GitHubu',
+          easyKeyloggerTitle: 'Easy Keylogger',
+          easyKeyloggerDesc: 'Vzdělávací pokus (neškodný)',
+          technologiesHeading: 'Technologie',
+          languagesHeading: 'Jazyky',
+          frameworksHeading: 'Frameworky',
+          otherHeading: 'Ostatní',
+          contactHeading: 'Kontakt',
+          emailLabel: 'Email:',
+          githubLabel: 'GitHub:',
+          regionLabel: 'Kraj:',
+          regionValue: 'Jihočeský, Česká republika',
+          footerQuote: '"Sedmkrát padneš, osmkrát vstaneš."'
+        },
+        en: {
+          title: 'Vojtěch "Voku" Kurinec | Portfolio',
+          tagline: 'Young Developer & IT Enthusiast',
+          captionNormal: 'Normal photo',
+            captionFunny: 'A bit funny.',
+          hobbyAI: 'AI',
+          hobby3d: '3D Printing',
+          hobbyRpi: 'Raspberry Pi',
+          hobbyCode: 'Coding',
+          hobbyTech: 'Technology',
+          whoHeading: 'Who am I?',
+          whoText: 'My name is <strong>Vojtěch Kurinec</strong>, but most people know me as <strong>Voku</strong>. I am <strong>14 years old</strong> and an IT enthusiast focusing on programming, AI, 3D printing and Raspberry Pi. I am working on a project called <strong>Knowix</strong>. I have also worked on <strong>School Chat</strong>, <strong>Easy Keylogger</strong> and a <strong>mini OS attempt</strong>. At school I stay active, I do sports and can be serious when needed. I do things mainly to grow and help others – not for fame or money.',
+          projectsHeading: 'Projects',
+          knowixTitle: 'Knowix',
+          knowixDesc: 'Educational website (Similar to Umimeto.org)',
+          visitSite: 'Visit Site',
+          schoolChatTitle: 'School Chat',
+          schoolChatDesc: 'Chat platform (Flet, also my first project)',
+          viewOnGitHub: 'View on GitHub',
+          easyKeyloggerTitle: 'Easy Keylogger',
+          easyKeyloggerDesc: 'Educational experiment (harmless)',
+          technologiesHeading: 'Technologies',
+          languagesHeading: 'Languages',
+          frameworksHeading: 'Frameworks',
+          otherHeading: 'Other',
+          contactHeading: 'Contact',
+          emailLabel: 'Email:',
+          githubLabel: 'GitHub:',
+          regionLabel: 'Region:',
+          regionValue: 'South Bohemian, Czech Republic',
+          footerQuote: '"Fall seven times, stand up eight."'
+        }
+      };
+
+      function updateDate(lang) {
+        const date = new Date();
+        const locale = lang === 'en' ? 'en-US' : 'cs-CZ';
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formatted = date.toLocaleDateString(locale, options);
+        document.getElementById('footer-date').textContent = `© Vojtěch Kurinec, ${formatted}`;
+      }
+
+      function setLanguage(lang) {
+        const dict = translations[lang];
+        if (!dict) return;
+        document.documentElement.lang = lang;
+        // Title
+        document.title = dict.title;
+        // Text nodes
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) el.innerHTML = dict[key];
+        });
+        // Attributes mapping: data-i18n-attr="attr:key;attr2:key2"
+        document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+          const mappings = el.getAttribute('data-i18n-attr').split(';');
+            mappings.forEach(map => {
+              const [attr, key] = map.split(':');
+              if (attr && key && dict[key]) el.setAttribute(attr.trim(), dict[key]);
+            });
+        });
+        // Toggle active button
+        document.querySelectorAll('.lang-switch button').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        localStorage.setItem('lang', lang);
+        updateDate(lang);
+      }
+
+      // Inicializace jazyka
+      const saved = localStorage.getItem('lang') || 'cs';
+      setLanguage(saved);
+
+      // Přepínač jazyků
+      document.querySelectorAll('.lang-switch button').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+      });
 
       // Jednoduchá animace při scrollování
       const animateOnScroll = () => {
@@ -760,7 +891,6 @@ footer p:first-child {
         });
       };
 
-      // Spustit při načtení a při scrollování
       window.addEventListener('load', animateOnScroll);
       window.addEventListener('scroll', animateOnScroll);
     </script>
